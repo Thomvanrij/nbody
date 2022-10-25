@@ -14,8 +14,9 @@
 #define _USE_MATH_DEFINES // https://docs.microsoft.com/en-us/cpp/c-runtime-library/math-constants?view=msvc-160
 #include <cmath>
 #include <iostream>
+#include <ctime>
 
-
+int start_s=clock() ;
 // these values are constant and not allowed to be changed
 const double SOLAR_MASS = 4 * M_PI * M_PI;
 const double DAYS_PER_YEAR = 365.24;
@@ -244,6 +245,8 @@ int main(int argc, char **argv) {
         std::cout << "This is " << argv[0] << std::endl;
         std::cout << "Call this program with an integer as program argument" << std::endl;
         std::cout << "(to set the number of iterations for the n-body simulation)." << std::endl;
+        int stop_s=clock();
+        std::cout<<"The time of execution of above program is :" <<(stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 <<"ms";
         return EXIT_FAILURE;
     } else {
         const unsigned int n = atoi(argv[1]);
@@ -253,6 +256,8 @@ int main(int argc, char **argv) {
             advance(state, 0.01);
         }
         std::cout << energy(state) << std::endl;
+        int stop_s=clock();
+        std::cout<<"The time of execution of above program is :" <<(stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 <<"ms";
         return EXIT_SUCCESS;
     }
 }
