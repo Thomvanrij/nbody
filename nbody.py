@@ -11,12 +11,14 @@
 
 import sys
 from math import sqrt, pi as PI
+import time
 
 
+start = time.time()
 def combinations(l):
     result = []
     for x in range(len(l) - 1):
-        ls = l[x + 1 :]
+        ls = l[x + 1:]
         for y in ls:
             result.append((l[x][0], l[x][1], l[x][2], y[0], y[1], y[2]))
     return result
@@ -128,4 +130,12 @@ if __name__ == "__main__":
         print(f"This is {sys.argv[0]}")
         print("Call this program with an integer as program argument")
         print("(to set the number of iterations for the n-body simulation).")
+        end = time.time()
+        print("The time of execution of above program is :",
+              (end - start) * 10 ** 3, "ms")
         sys.exit(1)
+
+
+
+
+
